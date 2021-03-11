@@ -25,22 +25,21 @@ int main (int argc, char * argv[], char ** envp) {
     int number = 0;
     int retval;
     int digit;
-    byte ascii_value;
+    unsigned char ascii_value;
     
     retval = read(STDIN_FILENO, &ascii_value, 1);
     while (retval == 1){
     
-        if (digit == 0 || digit == 1) { 
+        if (ascii_value == 0 || ascii_value == 1) { 
             digit = ascii_value - offset;
             number = (number << 1) + digit;  
             retval = read(STDIN_FILENO, &ascii_value, 1);
-        } 
-        else return 1; 
+        } else return 1;
+        
     }
-    
-    if (number < 4294967296){    
-      printf("%u\n", number);
-      return 0;
-    }
-    
-}
+    if (number < 4294967296){
+         printf("%u\n", number);
+         return 0;
+    } else return 1; 
+ 
+} 
