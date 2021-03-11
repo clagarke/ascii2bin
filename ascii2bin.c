@@ -34,7 +34,7 @@ int main (int argc, char * argv[], char ** envp) {
             digit = ascii_value - offset;
             number = (number << 1) + digit;  
             retval = read(STDIN_FILENO, &ascii_value, 1);
-        } else return 1;
+        } else retval = retval;
         
     }
     if (number < 4294967296){
